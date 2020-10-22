@@ -15,7 +15,7 @@ DataStream is led nationally by [The Gordon Foundation](http://gordonfoundation.
 ## Normalization
 To support the ability to compare data on DataStream.
 
-### Coordinates
+### Coordinate
 To ensure all locations are accurately placed on our map we project all coordinates into the `WGS84` datum.
 
 ### Encode *
