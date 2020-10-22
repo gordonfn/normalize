@@ -1,0 +1,10 @@
+
+# env
+node_modules
+
+# OS
+.DS_Store
+
+# IDE
+.idea
+*.iml

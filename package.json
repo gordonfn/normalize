@@ -1,0 +1,40 @@
+{
+  "name": "@gordonfn/normalize",
+  "version": "0.1.0-beta.1",
+  "description": "normalization for DataStream import",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "@gordonfn/schema": "2.0.5",
+    "ajv": "6.12.6",
+    "ajv-keywords": "3.4.1",
+    "change-case": "4.1.1",
+    "date-fns": "2.16.1",
+    "date-fns-tz": "1.0.12",
+    "mathjs": "7.5.1",
+    "molarmass": "0.2.0",
+    "proj4": "2.6.2",
+    "tz-lookup": "6.1.25",
+    "wqx": "3.0.2"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "mocha": "8.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://willfarrell@github.com/gordonfn/normalize.git"
+  },
+  "author": "willfarrell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gordonfn/normalize/issues"
+  },
+  "homepage": "https://github.com/gordonfn/normalize#readme"
+}
