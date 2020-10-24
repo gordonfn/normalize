@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/gordonfn/guidelines/master/docs/images/datastream.svg?sanitize=true" alt="DataStream Logo" width="400">
+  <img src="https://raw.githubusercontent.com/gordonfn/normalize/master/docs/images/datastream.svg?sanitize=true" alt="DataStream Logo" width="400">
   <br/>
   Normalization Engine
   <br/>
@@ -34,11 +34,8 @@ Lists of allowed values in our data schema are case-sensitive to ensure they're 
 ### Time
 To ensure our schema is as minimal as possible we calculate timezones based on location. We follow `ISO 8601` for time formatting notation.
 
-### Vertical
-TODO
-
 \* Changes the data imported before saving to the dataset file.
 
 <div align="center">
-  <a href="http://gordonfoundation.ca"><img src="https://raw.githubusercontent.com/gordonfn/guidelines/master/docs/images/the-gordon-foundation.svg?sanitize=true" alt="The Gordon Foundation Logo" width="200"></a>
+  <a href="http://gordonfoundation.ca"><img src="https://raw.githubusercontent.com/gordonfn/normalize/master/docs/images/the-gordon-foundation.svg?sanitize=true" alt="The Gordon Foundation Logo" width="200"></a>
 </div>

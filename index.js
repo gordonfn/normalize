@@ -4,7 +4,7 @@ const { snakeCase } = require('change-case')
 
 const encode = require('./lib/encode')
 const coordinate = require('./lib/coordinate')
-const {characteristic, depth} = require('./lib/measure')
+const {characteristic, distance} = require('./lib/measure')
 const methodSpeciation = require('./lib/methodSpeciation')
 const sanitize = require('./lib/sanitize')
 const time = require('./lib/time')
@@ -91,27 +91,28 @@ const makeObservation = (data) => {
   const [
     ActivityDepthHeightMeasureNormalized,
     ActivityDepthHeightUnitNormalized
-  ] = depth(data.ActivityDepthHeightMeasure, data.ActivityDepthHeightUnit)
+  ] = distance(data.ActivityDepthHeightMeasure, data.ActivityDepthHeightUnit)
 
   /*
   const [
     MonitoringLocationHorizontalAccuracyMeasureNormalized,
     MonitoringLocationHorizontalAccuracyUnitNormalized
-  ] = depth(data.MonitoringLocationHorizontalAccuracyMeasure, data.MonitoringLocationHorizontalAccuracyUnit)
+  ] = distance(data.MonitoringLocationHorizontalAccuracyMeasure, data.MonitoringLocationHorizontalAccuracyUnit)
+   */
+
+  /*
+  const [
+    MonitoringLocationVerticalMeasureNormalized,
+    MonitoringLocationVerticalUnitNormalized
+  ] = distance(data.MonitoringLocationVerticalMeasure, data.MonitoringLocationVerticalUnit)
    */
 
   /*
   const [
     WellHoleDepthMeasureNormalized,
     WellHoleDepthUnitNormalized
-  ] = depth(data.WellHoleDepthMeasure, data.WellHoleDepthUnit)
-   */
-
-  /*
-  const [
-    VerticalMeasureNormalized,
-    VerticalUnitNormalized
-  ] = vertical(data.VerticalMeasure, data.VerticalUnit)
+  ] = distance(data.WellHoleDepthMeasure, data.WellHoleDepthUnit)
+  // TODO Well Screen Interval measures
    */
 
   /*

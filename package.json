@@ -1,6 +1,6 @@
 {
   "name": "@gordonfn/normalize",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0",
   "description": "normalization for DataStream import",
   "main": "index.js",
   "directories": {
