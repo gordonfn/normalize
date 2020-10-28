@@ -401,9 +401,9 @@
     "Sum of cations": "meq/L",
     "Sum of anions": "meq/L",
     "Specific conductivity": "uS/cm",
-    "Barometric pressure": "mmHg",
-    "Pressure": "mmHg",
-    "Partial Pressure CO2": "mmHg"
+    "Barometric pressure": "kPa",
+    "Pressure": "kPa",
+    "Partial Pressure CO2": "kPa"
   },
   "groupings": {
     "Inorganics, Major, Metals": [
@@ -484,17 +484,19 @@
       "m/s",
       "mL",
       "L/mg-m",
+      "units/cm",
       "TCU",
       "m",
       "m2"
     ],
     "Radiochemical": [
-      "pCi/L"
+      "pCi/L","TU","permille","%"
     ],
     "Stable Isotopes": [
       "mg/L",
       "mg/kg",
-      "umol/L"
+      "umol/L",
+      "pCi/L","TU","permille","%"
     ],
     "Not Assigned": [
       "mg/L",

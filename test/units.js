@@ -90,6 +90,18 @@ describe('Units', function () {
       expect(value).to.equal(1)
     })
 
+    it('should convert w/ hPa', () => {
+      const value = units.convert(10, 'hPa', 'Pa')
+
+      expect(value).to.equal(1000)
+    })
+
+    it('should convert w/ kPa', () => {
+      const value = units.convert(1000, 'Pa', 'kPa')
+
+      expect(value).to.equal(1)
+    })
+
   })
 
   describe('convertList', function () {
