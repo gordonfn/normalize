@@ -8,7 +8,6 @@ const {characteristic, distance} = require('./lib/measure')
 const methodSpeciation = require('./lib/methodSpeciation')
 const sanitize = require('./lib/sanitize')
 const time = require('./lib/time')
-const vertical = require('./lib/vertical')
 
 let metadata = {
   observations: 0,
