@@ -209,7 +209,7 @@ const makeObservation = (data) => {
     AnalysisStartTimeZone,
 
     // Internal
-    DatasetID: metadata.getId,
+    DatasetID: metadata.getId(),
   }
 
   return record
