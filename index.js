@@ -11,10 +11,9 @@ const time = require('./lib/time')
 const metadata = require('./lib/metadata')
 
 const stream = new Transform({
-  readableObjectMode: true,
   writableObjectMode: true,
+  readableObjectMode: true,
   async transform (chunk, encoding, callback) {
-    chunk = JSON.parse(chunk.toString())
 
     // bad data in legacy dataset (72beacba-edac-4b71-beeb-d7d7eb371725 v1.0.0 has μS/cm)
     chunk.ResultUnit = encode(chunk.ResultUnit)
@@ -34,7 +33,7 @@ const stream = new Transform({
     delete record.monitoring_location_latitude_normalized
     delete record.monitoring_location_longitude_normalized
 
-    callback(null, JSON.stringify(record))
+    callback(null, record)
   }
 })
 
