@@ -217,5 +217,32 @@ const makeObservation = (data) => {
   return record
 }
 
+const columns = ['dataset_id',
+  'monitoring_location_id',
+  'monitoring_location_name',
+  'monitoring_location_type', 'monitoring_location_latitude',
+  'monitoring_location_longitude', 'monitoring_location_horizontal_coordinate_reference_system',
+  'activity_type', 'activity_media_name',
+  'activity_start_date', 'activity_start_time',
+  'activity_start_time_zone', 'activity_end_date',
+  'activity_end_time', 'activity_end_time_zone',
+  'activity_depth_height_measure', 'activity_depth_height_unit',
+  'sample_collection_equipment_name', 'result_detection_condition',
+  'characteristic_name', 'method_speciation',
+  'sample_fraction', 'result_value',
+  'result_unit', 'result_value_type',
+  'result_status_id', 'result_comment',
+  'result_analytical_method_id', 'result_analytical_method_name',
+  'result_analytical_method_context', 'laboratory_name',
+  'laboratory_sample_id', 'analysis_start_date',
+  'analysis_start_time', 'analysis_start_time_zone',
+  'result_detection_quantitation_limit_type', 'result_detection_quantitation_limit_measure',
+  'result_detection_quantitation_limit_unit',
+  'monitoring_location_coordinate_normalized',
+  'activity_depth_height_measure_normalized',
+  'activity_depth_height_unit_normalized', 'result_measure_normalized',
+  'result_unit_normalized', 'result_detection_quantitation_limit_measure_normalized',
+  'result_detection_quantitation_limit_unit_normalized']
 
-module.exports = {stream}
+
+module.exports = {stream, columns}
