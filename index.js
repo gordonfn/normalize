@@ -25,11 +25,12 @@ const stream = new Transform({
     // Change keys for DB use
     const record = {}
     Object.keys(chunk).forEach((key) => {
-      record[snakeCase(key)] = chunk[key]
+      record[snakeCase(key)] = chunk[key] !== undefined ? chunk[key] : null
     })
 
     metadata.update(record)
 
+    // used for metadata update only
     delete record.monitoring_location_latitude_normalized
     delete record.monitoring_location_longitude_normalized
 
@@ -151,23 +152,27 @@ const makeObservation = (data) => {
   } = data
 
   const record = {
+    // Internal
+    DatasetID: metadata.getId(),
+
+    // Schema
     //DatasetName: encode(DatasetName), // Not save to the database
     MonitoringLocationID,
     MonitoringLocationName: encode(MonitoringLocationName),
+    MonitoringLocationType,
     MonitoringLocationLatitude,
     MonitoringLocationLongitude,
     MonitoringLocationHorizontalCoordinateReferenceSystem,
-    MonitoringLocationType,
-
-    ActivityStartDate,
-    ActivityStartTime,
-    ActivityEndDate,
-    ActivityEndTime,
-    AnalysisStartDate,
-    AnalysisStartTime,
 
     ActivityType,
     ActivityMediaName,
+    ActivityStartDate,
+    ActivityStartTime,
+    ActivityStartTimeZone,  // Calculated
+    ActivityEndDate,
+    ActivityEndTime,
+    ActivityEndTimeZone,  // Calculated
+
     ActivityDepthHeightMeasure,
     ActivityDepthHeightUnit,
     SampleCollectionEquipmentName,
@@ -184,16 +189,18 @@ const makeObservation = (data) => {
     ResultAnalyticalMethodID,
     ResultAnalyticalMethodName,
     ResultAnalyticalMethodContext,
+
+    LaboratoryName: encode(LaboratoryName),
+    LaboratorySampleID,
+    AnalysisStartDate,
+    AnalysisStartTime,
+    AnalysisStartTimeZone,  // Calculated
+
     ResultDetectionQuantitationLimitType,
     ResultDetectionQuantitationLimitMeasure,
     ResultDetectionQuantitationLimitUnit,
 
-    LaboratoryName: encode(LaboratoryName),
-    LaboratorySampleID,
-
     // Normalized
-    MonitoringLocationLongitudeNormalized: coord[0],
-    MonitoringLocationLatitudeNormalized: coord[1],
     MonitoringLocationCoordinateNormalized,
     ActivityDepthHeightMeasureNormalized,
     ActivityDepthHeightUnitNormalized,
@@ -202,13 +209,9 @@ const makeObservation = (data) => {
     ResultDetectionQuantitationLimitMeasureNormalized,
     ResultDetectionQuantitationLimitUnitNormalized,
 
-    // Calculated
-    ActivityStartTimeZone,
-    ActivityEndTimeZone,
-    AnalysisStartTimeZone,
-
-    // Internal
-    DatasetID: metadata.getId(),
+    // For metadata update only
+    MonitoringLocationLongitudeNormalized: coord[0],
+    MonitoringLocationLatitudeNormalized: coord[1],
   }
 
   return record
