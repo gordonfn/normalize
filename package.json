@@ -27,8 +27,8 @@
     "mocha": "8.2.0"
   },
   "scripts": {
-    "download": "curl -Ls 'https://docs.google.com/spreadsheets/d/1IwvizmcXDDfogyRA5NLoSx2t3GXYNYmOhoI_-TnrVGY/export?format=csv&gid=1798400430' -o build/normalize.csv",
-    "build": "node build/normalize.json.js",
+    "download": "curl -Ls 'https://docs.google.com/spreadsheets/d/1IwvizmcXDDfogyRA5NLoSx2t3GXYNYmOhoI_-TnrVGY/export?format=csv&gid=1798400430' -o bin/normalize.csv",
+    "build": "node bin/normalize.json.js",
     "test": "npm run build && mocha"
   },
   "repository": {
