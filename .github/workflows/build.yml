@@ -1,9 +1,9 @@
 name: build
 
 on:
-  schedule:
-    - cron: '0 2 * * 6'
   workflow_dispatch:
+  repository_dispatch:
+    types: [schema]
 
 jobs:
   build:
@@ -30,6 +30,7 @@ jobs:
         run: |
           npm install
           npm update @gordonfn/schema
+          npm update wqx
       -
         name: Build and test allowed values
         run: |
@@ -40,7 +41,8 @@ jobs:
         name: Version bump
         run: |
           echo "tag=$(npm version patch)" >> $GITHUB_ENV
-      - if: env.change
+      -
+        if: env.change
         name: Commit Changes
         run: |
           git add -A
