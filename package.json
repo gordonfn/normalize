@@ -21,11 +21,15 @@
     "wqx": "3.0.2"
   },
   "devDependencies": {
+    "@gordonfn/guidelines": "0.3.0-beta.6",
     "chai": "4.2.0",
+    "csv-parse": "4.14.1",
     "mocha": "8.2.0"
   },
   "scripts": {
-    "test": "mocha"
+    "download": "curl -Ls 'https://docs.google.com/spreadsheets/d/1IwvizmcXDDfogyRA5NLoSx2t3GXYNYmOhoI_-TnrVGY/export?format=csv&gid=1798400430' -o build/normalize.csv",
+    "build": "node build/normalize.json.js",
+    "test": "npm run build && mocha"
   },
   "repository": {
     "type": "git",
