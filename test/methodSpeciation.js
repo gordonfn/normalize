@@ -4,6 +4,4 @@ const expect = chai.expect
 
 const methodSpeciation = require('../lib/methodSpeciation')
 
-describe('Method Speciation', function () {
-
-})
+describe('Method Speciation', function () {})

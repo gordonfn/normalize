@@ -1,8 +1,12 @@
 {
   "name": "@gordonfn/normalize",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "normalization for DataStream import",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -10,7 +14,7 @@
   "dependencies": {
     "@gordonfn/schema": "2.0.6",
     "ajv": "6.12.6",
-    "ajv-keywords": "3.4.1",
+    "ajv-keywords": "3.5.2",
     "change-case": "4.1.1",
     "date-fns": "2.16.1",
     "date-fns-tz": "1.0.12",
@@ -21,12 +25,18 @@
     "wqx": "3.0.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
     "@gordonfn/guidelines": "0.3.0-beta.6",
     "chai": "4.2.0",
     "csv-parse": "4.14.1",
-    "mocha": "8.2.0"
+    "husky": "4.3.6",
+    "lint-staged": "10.5.3",
+    "mocha": "8.2.0",
+    "prettier-standard-cli": "16.0.5"
   },
   "scripts": {
+    "lint": "prettier-standard '*/**/*.{js,json}'",
     "download": "curl -Ls 'https://docs.google.com/spreadsheets/d/1IwvizmcXDDfogyRA5NLoSx2t3GXYNYmOhoI_-TnrVGY/export?format=csv&gid=1798400430' -o bin/normalize.csv",
     "build": "node bin/normalize.json.js",
     "test": "npm run build && mocha"
@@ -40,5 +50,22 @@
   "bugs": {
     "url": "https://github.com/gordonfn/normalize/issues"
   },
-  "homepage": "https://github.com/gordonfn/normalize#readme"
+  "homepage": "https://github.com/gordonfn/normalize#readme",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.json": [
+      "prettier-standard",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
 }
