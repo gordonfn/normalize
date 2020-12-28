@@ -1,6 +1,6 @@
 {
   "name": "@gordonfn/normalize",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "normalization for DataStream import",
   "main": "index.js",
   "directories": {
@@ -8,9 +8,10 @@
     "test": "test"
   },
   "dependencies": {
-    "@gordonfn/schema": "2.0.6",
-    "ajv": "6.12.6",
-    "ajv-keywords": "3.4.1",
+    "@gordonfn/schema": "2.1.0",
+    "ajv": "7.0.2",
+    "ajv-formats": "1.5.1",
+    "ajv-keywords": "4.0.0",
     "change-case": "4.1.1",
     "date-fns": "2.16.1",
     "date-fns-tz": "1.0.12",
