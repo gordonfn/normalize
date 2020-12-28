@@ -43,12 +43,11 @@ describe('Normalize', function () {
     const [
       NormalizedResultValue,
       NormalizedResultUnit
-    ] = normalize.characteristic('', 1,'g')
+    ] = normalize.characteristic('', 1, 'g')
 
     expect(NormalizedResultValue).to.equal(1)
     expect(NormalizedResultUnit).to.equal('g')
   })
-
 
   describe('Characteristics', function () {
     it('should convert Chloride - Override Unit', () => {
@@ -65,7 +64,7 @@ describe('Normalize', function () {
       const [
         NormalizedResultValue,
         NormalizedResultUnit
-      ] = normalize.characteristic('Plutonium',1,'g/l')
+      ] = normalize.characteristic('Plutonium', 1, 'g/l')
 
       expect(NormalizedResultValue).to.equal(1000000)
       expect(NormalizedResultUnit).to.equal('µg/L')
@@ -87,7 +86,7 @@ describe('Normalize', function () {
       const [
         NormalizedResultValue,
         NormalizedResultUnit
-      ] = normalize.characteristic('pH', 1, 'None' )
+      ] = normalize.characteristic('pH', 1, 'None')
 
       expect(NormalizedResultValue).to.equal(1)
       expect(NormalizedResultUnit).to.equal('')
@@ -106,7 +105,7 @@ describe('Normalize', function () {
       const [
         NormalizedResultValue,
         NormalizedResultUnit
-      ] = normalize.characteristic('Chloride', 1, 'JTU' )
+      ] = normalize.characteristic('Chloride', 1, 'JTU')
 
       expect(NormalizedResultValue).to.equal(1)
       expect(NormalizedResultUnit).to.equal('mg/L')
@@ -121,6 +120,5 @@ describe('Normalize', function () {
       expect(NormalizedResultValue).to.equal(1)
       expect(NormalizedResultUnit).to.equal('mg/L')
     })
-
   })
 })

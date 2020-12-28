@@ -101,26 +101,25 @@ describe('Units', function () {
 
       expect(value).to.equal(1)
     })
-
   })
 
   describe('convertList', function () {
     it('should convert a single unit', () => {
-      const [value,unit] = units.convertList(1, 'g/L', 'mg/L')
+      const [value, unit] = units.convertList(1, 'g/L', 'mg/L')
 
       expect(value).to.equal(1000)
       expect(unit).to.equal('mg/L')
     })
 
     it('should convert to single unit from array', () => {
-      const [value,unit] = units.convertList(1, 'g/L', ['%','mg/L'])
+      const [value, unit] = units.convertList(1, 'g/L', ['%', 'mg/L'])
 
       expect(value).to.equal(1000)
       expect(unit).to.equal('mg/L')
     })
 
     it('should convert to single unit from array with dup types', () => {
-      const [value,unit] = units.convertList(1, 'g/L', ['%','mg/L','ug/L'])
+      const [value, unit] = units.convertList(1, 'g/L', ['%', 'mg/L', 'ug/L'])
 
       expect(value).to.equal(1000)
       expect(unit).to.equal('mg/L')
