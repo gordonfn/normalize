@@ -39,6 +39,10 @@ const stream = new Transform({
 })
 
 const makeObservation = (data) => {
+  // Technical Debt: fix CharacteristicName typo / breaks WQX interoperability
+  // if (data.CharacteristicName === 'Apparent Colour') {
+  //   data.CharacteristicName = 'Apparent Color'
+  // }
 
   const coord = coordinate(
     data.MonitoringLocationHorizontalCoordinateReferenceSystem,
