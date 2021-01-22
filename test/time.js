@@ -53,17 +53,46 @@ describe('Time', function () {
     expect(ActivityEndTimeZone).to.equal('-07:00')
   })
 
-  it('should add timezone for Analysis Start', () => {
+  it('should add timezone for Analysis Start positive', () => {
     const {
       MonitoringLocationTimeZone,
       AnalysisStartTimestamp,
       AnalysisStartTimeZone
     } = time(
-      { AnalysisStartDate: '2020-01-01', AnalysisStartTimeZone: '+00:00' },
+      { AnalysisStartDate: '2020-01-01', AnalysisStartTimeZone: '+02:30' },
       [-114, 51]
     )
 
-    expect(AnalysisStartTimestamp).to.equal('2020-01-01T00:00:00+00:00')
-    expect(AnalysisStartTimeZone).to.equal('+00:00')
+    expect(AnalysisStartTimestamp).to.equal('2020-01-01T00:00:00+02:30')
+    expect(AnalysisStartTimeZone).to.equal('+02:30')
   })
+
+  it('should add timezone for Analysis Start negative w/ -0600', () => {
+    const {
+      MonitoringLocationTimeZone,
+      AnalysisStartTimestamp,
+      AnalysisStartTimeZone
+    } = time(
+      { AnalysisStartDate: '2020-01-01', AnalysisStartTimeZone: '-0600' },
+      [-114, 51]
+    )
+
+    expect(AnalysisStartTimestamp).to.equal('2020-01-01T00:00:00-06:00')
+    expect(AnalysisStartTimeZone).to.equal('-06:00')
+  })
+
+  it('should add timezone for Analysis Start negative w/ -600', () => {
+    const {
+      MonitoringLocationTimeZone,
+      AnalysisStartTimestamp,
+      AnalysisStartTimeZone
+    } = time(
+      { AnalysisStartDate: '2020-01-01', AnalysisStartTimeZone: '-600' },
+      [-114, 51]
+    )
+
+    expect(AnalysisStartTimestamp).to.equal('2020-01-01T00:00:00-06:00')
+    expect(AnalysisStartTimeZone).to.equal('-06:00')
+  })
+
 })

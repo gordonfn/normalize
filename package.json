@@ -1,6 +1,6 @@
 {
   "name": "@gordonfn/normalize",
-  "version": "0.1.14",
+  "version": "0.1.18",
   "description": "normalization for DataStream import",
   "main": "index.js",
   "files": [
@@ -11,8 +11,14 @@
     "lib": "lib",
     "test": "test"
   },
+  "scripts": {
+    "lint": "prettier-standard '*/**/*.{js,json}'",
+    "download": "curl -Ls 'https://docs.google.com/spreadsheets/d/1IwvizmcXDDfogyRA5NLoSx2t3GXYNYmOhoI_-TnrVGY/export?format=csv&gid=1798400430' -o bin/normalize.csv",
+    "build": "node bin/normalize.json.js",
+    "test": "npm run build && mocha"
+  },
   "dependencies": {
-    "@gordonfn/schema": "2.1.3",
+    "@gordonfn/schema": "2.1.4",
     "ajv": "7.0.2",
     "ajv-formats": "1.5.1",
     "ajv-keywords": "4.0.0",
@@ -29,18 +35,13 @@
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@gordonfn/guidelines": "0.3.0-beta.6",
+    "c8": "7.4.0",
     "chai": "4.2.0",
     "csv-parse": "4.14.1",
     "husky": "4.3.6",
     "lint-staged": "10.5.3",
     "mocha": "8.2.0",
     "prettier-standard-cli": "16.0.5"
-  },
-  "scripts": {
-    "lint": "prettier-standard '*/**/*.{js,json}'",
-    "download": "curl -Ls 'https://docs.google.com/spreadsheets/d/1IwvizmcXDDfogyRA5NLoSx2t3GXYNYmOhoI_-TnrVGY/export?format=csv&gid=1798400430' -o bin/normalize.csv",
-    "build": "node bin/normalize.json.js",
-    "test": "npm run build && mocha"
   },
   "repository": {
     "type": "git",
