@@ -4,46 +4,46 @@ const expect = chai.expect
 
 const sanitize = require('../lib/sanitize')
 
+console.error = () => {}
+
 describe('Sanitize', function () {
 
-  it('Should sanitize data', function (done) {
+  it('Should see @gordonfn/schema for full unit tests', function (done) {
+    expect(true).to.equal(true)
+    done()
+  })
+
+  it('Should remove nulls', function(done) {
     let data = {
-      "DatasetName":"Test",
-      "MonitoringLocationID":"A1",
-      "MonitoringLocationName":"A1 Test",
-      "MonitoringLocationLatitude":"51.0486",
-      "MonitoringLocationLongitude":"-114.0708",
-      "MonitoringLocationHorizontalCoordinateReferenceSystem":"AMSMA",
-      "MonitoringLocationType":"ocean",
-      "ActivityType":"Field Msr/Obs",
-      "ActivityMediaName":"pore water",
-      "ActivityDepthHeightMeasure":"-34",
-      "ActivityDepthHeightUnit":"m",
-      "SampleCollectionEquipmentName":"bucket",
-      "CharacteristicName":"aluminum",
-      "MethodSpeciation":"as B",
-      "ResultSampleFraction":"Dissolved",
-      "ResultValue":"99.99",
-      "ResultUnit":"#/100ml",
-      'ResultValueType':'Actual',
-      "ResultStatusID":"Accepted",
-      "ResultComment":"None at this time",
-      "ResultAnalyticalMethodID":"1",
-      "ResultAnalyticalMethodContext":"APHA",
-      "ActivityStartDate":"2018-02-23",
-      "ActivityStartTime":"13:15:00",
-      "ActivityEndDate":"2018-02-23",
-      "ActivityEndTime":"13:15:00",
-      "LaboratoryName":"Farrell Labs",
-      "LaboratorySampleID":"101010011110",
-      "AnalysisStartDate":"2018-02-23",
-      "AnalysisStartTime":"13:15:00",
-      "AnalysisStartTimeZone":"-06:00"
+      ActivityType: null
+    }
+    sanitize(data)
+
+    expect(data.ActivityType).to.equal(undefined)
+    done()
+  })
+
+  it('Should remove blanks', function(done) {
+    let data = {
+      ActivityType: ''
+    }
+    sanitize(data)
+
+    expect(data.ActivityType).to.equal(undefined)
+    done()
+  })
+
+  it('Should throw error', function(done) {
+    let data = {
+      'CharacteristicName': 'Apparent colouring book'
+    }
+    try {
+      sanitize(data)
+      expect(true).to.equal(false)
+    } catch(e) {
+      expect(true).to.equal(true)
     }
 
-    const valid = sanitize(data)
-
-    expect(data.ResultValue).to.equal(99.99)
     done()
   })
 

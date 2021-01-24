@@ -39,10 +39,6 @@ const stream = new Transform({
 })
 
 const makeObservation = (data) => {
-  // Technical Debt: fix CharacteristicName typo / breaks WQX interoperability
-  // if (data.CharacteristicName === 'Apparent Colour') {
-  //   data.CharacteristicName = 'Apparent Color'
-  // }
 
   const coord = coordinate(
     data.MonitoringLocationHorizontalCoordinateReferenceSystem,
@@ -104,12 +100,12 @@ const makeObservation = (data) => {
     data.ResultComment = data.ResultComment.replace("\r", '')
   }
 
-  // TODO Move to publish, do in SQL
-  //if (data.MonitoringLocationType === 'Unspecified') {}
-
   const {
+    ActivityStartTime,
     ActivityStartTimeZone,
+    ActivityEndTime,
     ActivityEndTimeZone,
+    AnalysisStartTime,
     AnalysisStartTimeZone
   } = time(data, coord)
 
@@ -123,11 +119,8 @@ const makeObservation = (data) => {
     MonitoringLocationType,
 
     ActivityStartDate,
-    ActivityStartTime,
     ActivityEndDate,
-    ActivityEndTime,
     AnalysisStartDate,
-    AnalysisStartTime,
 
     ActivityType,
     ActivityMediaName,
@@ -197,8 +190,8 @@ const makeObservation = (data) => {
     LaboratoryName: encode(LaboratoryName),
     LaboratorySampleID,
     AnalysisStartDate,
-    AnalysisStartTime,
-    AnalysisStartTimeZone,  // Calculated
+    AnalysisStartTime,  // Normalized
+    AnalysisStartTimeZone,  // Normalized
 
     ResultDetectionQuantitationLimitType,
     ResultDetectionQuantitationLimitMeasure,

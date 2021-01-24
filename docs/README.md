@@ -31,10 +31,19 @@ This is currently not implemented. If you feel this would have value please let 
 ### Sanitize *
 Lists of allowed values in our data schema are case-sensitive to ensure they're interoperable. To make it easier for data stewards we allow values to be case-insensitive and correct internally.
 
-### Time
-To ensure our schema is as minimal as possible we calculate timezones based on location. We follow `ISO 8601` for time formatting notation.
+### Temporal
+We follow `ISO 8601` for time formatting notation.
 
-\* Changes the data imported before saving to the dataset file.
+#### Time *
+Time missing leading zero will have it added
+
+#### Time Zone *
+To ensure time zone is in the proper format, `+00:00`. Additionally, we calculate timezones based on location.
+
+\* Changes the data imported before saving to the downloadable dataset file.
+
+## Testing
+We aim to have our test be as robust as possible. This is accomplished by having acceptance and rejection tests.
 
 <div align="center">
   <a href="http://gordonfoundation.ca"><img src="https://raw.githubusercontent.com/gordonfn/normalize/master/docs/images/the-gordon-foundation.svg?sanitize=true" alt="The Gordon Foundation Logo" width="200"></a>

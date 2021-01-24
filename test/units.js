@@ -36,6 +36,12 @@ describe('Units', function () {
       expect(value).to.equal(1)
     })
 
+    it('should skip convert', () => {
+      const value = units.convert(1, 'Granules', 'Granules')
+
+      expect(value).to.equal(1)
+    })
+
     it('should convert Distance', () => {
       const value = units.convert(100, 'cm', 'm')
 
