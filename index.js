@@ -7,7 +7,7 @@ const coordinate = require('./lib/coordinate')
 const {characteristic, distance} = require('./lib/measure')
 //const methodSpeciation = require('./lib/methodSpeciation')
 const sanitize = require('./lib/sanitize')
-const time = require('./lib/time')
+const temporal = require('./lib/temporal')
 const metadata = require('./lib/metadata')
 
 const stream = new Transform({
@@ -107,7 +107,7 @@ const makeObservation = (data) => {
     ActivityEndTimeZone,
     AnalysisStartTime,
     AnalysisStartTimeZone
-  } = time(data, coord)
+  } = temporal(data, coord)
 
   const {
     //DatasetName,

@@ -6,7 +6,7 @@ const normalize = require('../lib/measure')
 
 console.error = () => {}
 
-describe('Normalize', function () {
+describe('Normalize Measure', function () {
   describe('Empty Values', function () {
     it('should has value zero', () => {
       const [
@@ -36,6 +36,15 @@ describe('Normalize', function () {
 
       expect(NormalizedResultValue).to.equal('')
       expect(NormalizedResultUnit).to.equal('')
+    })
+    it('should skip when invalid value', () => {
+      const [
+        NormalizedResultValue,
+        NormalizedResultUnit
+      ] = normalize.characteristic('', Infinity, 'warhol')
+
+      expect(NormalizedResultValue).to.equal(null)
+      expect(NormalizedResultUnit).to.equal('warhol')
     })
   })
 
@@ -121,4 +130,40 @@ describe('Normalize', function () {
       expect(NormalizedResultUnit).to.equal('mg/L')
     })
   })
+
+  describe('Distance', function () {
+    it('should skip when invalid value', () => {
+      const [normalizedMeasure, normalizedUnit] = normalize.distance(Infinity, 'm')
+
+      expect(normalizedMeasure).to.equal(null)
+      expect(normalizedUnit).to.equal('m')
+    })
+
+    it('should skip when empty unit', () => {
+      const [normalizedMeasure, normalizedUnit] = normalize.distance(1, '')
+
+      expect(normalizedMeasure).to.equal(1)
+      expect(normalizedUnit).to.equal('')
+    })
+    it('should convert ft', () => {
+      const [normalizedMeasure, normalizedUnit] = normalize.distance(100, 'cm')
+
+      expect(normalizedMeasure).to.equal(1)
+      expect(normalizedUnit).to.equal('m')
+    })
+
+    it('should skip when same unit', () => {
+      const [normalizedMeasure, normalizedUnit] = normalize.distance(1, 'm')
+
+      expect(normalizedMeasure).to.equal(1)
+      expect(normalizedUnit).to.equal('m')
+    })
+    it('should fail to convert', () => {
+      const [normalizedMeasure, normalizedUnit] = normalize.distance(14, 'parsec')
+
+      expect(normalizedMeasure).to.equal(14)
+      expect(normalizedUnit).to.equal('parsec')
+    })
+  })
+
 })
