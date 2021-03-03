@@ -11,7 +11,7 @@ describe('Metadata', function () {
     metadata.set()
     const value = metadata.get()
 
-    expect(value.observations).to.equal(0)
+    //expect(value.observations).to.equal(0)
     expect(value.temporal_extent).to.equal('(,)')
     expect(value.spatial_extent).to.equal('BOX(-180 -90, 180 90)')
     expect(value.vertical_extent).to.equal('(,)')
